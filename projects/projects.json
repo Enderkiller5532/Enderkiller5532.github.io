@@ -8,7 +8,7 @@
   {
     "name": "netplan-auto-skript",
     "description": "Just make easy netplan int configs.",
-    "image": "./images/netplan.png",
+    "image": "../images/netplan.png",
     "link": "netplan"
   },
   {
