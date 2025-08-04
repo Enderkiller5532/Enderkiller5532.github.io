@@ -92,6 +92,10 @@
         projects.forEach(project => {
           const card = document.createElement('div');
           card.className = 'project-card';
+          card.style.cursor = 'pointer';
+          card.onclick = () => {
+            window.open(project.link, '_blank', 'noopener');
+          };
 
           const img = document.createElement('img');
           img.className = 'project-image';
