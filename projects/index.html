@@ -109,6 +109,30 @@
           title.className = 'project-title';
           title.textContent = project.name;
 
+          // Кнопка для открытия локальной директории
+          const openDirBtn = document.createElement('button');
+          openDirBtn.title = 'Открыть локальную директорию проекта';
+          openDirBtn.style = `
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: #21262d;
+            color: #58a6ff;
+            margin-left: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: background 0.2s;
+          `;
+          openDirBtn.innerHTML = '📁';
+          openDirBtn.onclick = (e) => {
+            e.stopPropagation();
+            window.open(`../projects/${project.name}/index.html`, '_blank', 'noopener');
+          };
+
           const desc = document.createElement('p');
           desc.className = 'project-description';
           desc.textContent = project.description;
@@ -120,7 +144,14 @@
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
 
-          info.appendChild(title);
+          // Добавляем заголовок и кнопку в одну строку
+          const titleRow = document.createElement('div');
+          titleRow.style.display = 'flex';
+          titleRow.style.alignItems = 'center';
+          titleRow.appendChild(title);
+          titleRow.appendChild(openDirBtn);
+
+          info.appendChild(titleRow);
           info.appendChild(desc);
           info.appendChild(link);
 
