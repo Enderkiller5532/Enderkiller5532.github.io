@@ -8,8 +8,8 @@
   {
     "name": "netplan-auto-skript",
     "description": "Just make easy netplan int configs.",
-    "image": "../images/bind9.png",
-    "link": "https://github.com/Enderkiller5532/netplan_auto_skript/"
+    "image": "./images/netplan.png",
+    "link": "netplan"
   },
   {
     "name": "Rinetd-auto-skript",
