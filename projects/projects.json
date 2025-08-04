@@ -12,9 +12,9 @@
     "link": "https://github.com/Enderkiller5532/netplan_auto_skript/"
   },
   {
-    "name": "Rinetd-auto-skript",
+    "name": "rinetd-auto-skript",
     "description": "This skript add new binds in rinetd.config",
     "image": "../images/Rinetd.png",
-    "link": "https://github.com/Enderkiller5532/Rinetd-auto-skript"
+    "link": "https://github.com/Enderkiller5532/rinetd-auto-skript"
   }
 ]
