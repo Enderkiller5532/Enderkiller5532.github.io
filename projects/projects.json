@@ -9,7 +9,7 @@
     "name": "netplan-auto-skript",
     "description": "Just make easy netplan int configs.",
     "image": "../images/netplan.png",
-    "link": "netplan"
+    "link": "https://github.com/Enderkiller5532/netplan_auto_skript/"
   },
   {
     "name": "Rinetd-auto-skript",
