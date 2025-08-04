@@ -1,0 +1,172 @@
+#!/bin/bash
+
+########################################################
+################# For skript Don't touch ###############
+########################################################
+bind_def="/etc/bind/db.255"
+########## Global var or commands used later ###########
+default_gate_away=`ip r | awk '{print $3}' | head -n 1` 
+check_distro=`cat /etc/*-release | grep "ID=*" -w | cut -d'=' -f2`
+########################################################
+
+
+
+
+
+
+
+
+
+clear
+##############__ Install bind9 __#################
+
+function install_bind9 () {
+case "$check_distro" in
+    ubuntu|debian)pkg_mgr="apt";;
+    centos|rhel|almalinux|fedora)
+    if command -v dnf >/dev/null 2>&1;then
+        pkg_mgr="dnf"
+    elif command -v yum >/dev/null 2>&1;then
+        pkg_mgr="yum"
+    else
+        echo "HOW DID YOU MAKE IT?"
+    fi ;;
+    *)printf "Sorry not support $check_distro ,but if all file sys same you can use other options" ;;
+esac
+case "$pkg_mgr" in
+    apt) $pkg_mgr install -y bind9 bind9utils bind9-doc ;;
+    dnf) $pkg_mgr install -y bind bind-utils ;;
+    yum) $pkg_mgr install -y bind bind-utils ;;
+    *)printf " ERROR  STOP INSTALLER" ; exit 1;;
+esac
+    first_install_make_all_ubuntu_like
+}
+
+##########__ Check if user use sudo __#############
+
+function check_sudo (){
+ps -ef | grep 'sudo ' | grep "grep" -v | grep "bind9-cli-app"
+    if [ $? -eq 0 ]; then
+    clear
+    echo "OK we use sudo be careful"
+else
+    echo "Please use sudo {or use root user - joke don't realy use it with root}"
+    exit 1 ; kill `ps -ef |  grep "grep" -v |  grep "bind9-cli-app" | grep bash | awk '{print $2}'`
+fi
+}
+##########__ First install __#############
+function first_install_make_all_ubuntu_like (){
+
+    echo "Now i will make your bind system like ubuntu"
+
+    chmod 666 /etc/bind/named.conf
+
+    cat << EOF > /etc/bind/named.conf
+    include "/etc/bind/named.conf.options";
+    include "/etc/bind/named.conf.local";
+    include "/etc/bind/named.conf.default-zones";
+EOF
+
+    chmod 644 /etc/bind/named.conf
+
+    if ! [ -f /etc/bind/named.conf.options ]; then
+        echo "File does not exist.Creating"
+        touch /etc/bind/named.conf.options
+        chown root:bind /etc/bind/named.conf.options
+    fi
+
+    if ! [ -f /etc/bind/named.conf.local ]; then
+        echo "File does not exist.Creating"
+        touch /etc/bind/named.conf.local
+        chown root:bind /etc/bind/named.conf.local
+    fi
+
+        if ! [ -f /etc/bind/named.conf.default-zones ]; then
+        echo "File does not exist.Creating"
+        touch /etc/bind/named.conf.default-zones
+        chown root:bind /etc/bind/named.conf.default-zones
+    fi
+
+    chmod 666 /etc/bind/named.conf.default-zones
+    chmod 666 /etc/bind/named.conf.options
+    chmod 666 /etc/bind/named.conf.local
+
+    cat << EOF > /etc/bind/named.conf.options
+        options {
+	            directory "/var/cache/bind";
+	            forwarders {
+	 	            $default_gate_away; 1.1.1.1;
+	            };
+	            dnssec-validation auto;
+	            listen-on-v6 { any; };
+    };
+
+EOF
+
+    cat << EOF > /etc/bind/named.conf.default-zones
+zone "localhost" {
+	type master;
+	file "/etc/bind/db.local";
+};
+
+zone "127.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.127";
+};
+
+zone "0.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.0";
+};
+
+zone "255.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.255";
+};
+EOF
+
+echo '
+$TTL	604800
+@	IN	SOA	localhost. root.localhost. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	localhost.
+' > /etc/bind/db.255 
+
+cat $bind_def > /etc/bind/db.0
+cat $bind_def > /etc/bind/db.local 
+cat $bind_def > /etc/bind/db.127
+echo '1.0.0	IN	PTR	localhost.' >> /etc/bind/db.127
+
+    chmod 644 /etc/bind/named.conf.*
+    echo "Now we have ubuntu like files"
+    sleep 1
+    clear
+
+}
+
+##########__ Add  new zone __#############
+
+##########__ Add  new bind __#############
+
+
+
+#install_bind9
+check_sudo
+
+function interface_of_app (){
+    clear
+    printf "\t\tWellcome to dns helper \n This app can :\n1)Install bind9 service (only supported distros{Now supported Ubuntu-based/RHEL-based})\n2)Add new record for zone\n3)create new zone\n"
+    read operator
+    case "$operator" in
+            1)install_bind9;;
+            2);;
+            3);;
+            *)interface_of_app;;
+    esac
+}
+interface_of_app
