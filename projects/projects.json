@@ -1,0 +1,20 @@
+[
+  {
+    "name": "bind9-cli-app-git",
+    "description": "App that help us to work with bind9 service (raw).",
+    "image": "../images/Bind.png",
+    "link": "https://github.com/Enderkiller5532/bind9-cli-app"
+  },
+  {
+    "name": "netplan-auto-skript",
+    "description": "Just make easy netplan int configs.",
+    "image": "../images/bind9.png",
+    "link": "https://github.com/Enderkiller5532/netplan_auto_skript/"
+  },
+  {
+    "name": "Rinetd-auto-skript",
+    "description": "This skript add new binds in rinetd.config",
+    "image": "../images/Rinetd.png",
+    "link": "https://github.com/Enderkiller5532/Rinetd-auto-skript"
+  }
+]
