@@ -27,20 +27,20 @@
       background: rgba(20, 20, 20, 0.98);
       border-radius: 18px;
       box-shadow: 0 0 32px 0 #ff990055, 0 2px 8px #0008;
-      padding: 2.2rem 2.2rem;
-      min-width: 340px;
-      max-width: 540px;
+      padding: 3.5rem 3.5rem;
+      min-width: 520px;
+      max-width: 900px;
       margin: 4vh 0 4vh 4vw;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
       border: 2.5px solid #ff9900;
-      font-size: 1.08rem;
-      line-height: 1.7;
+      font-size: 1.15rem;
+      line-height: 1.8;
       color: #eaeaea;
       overflow-y: auto;
-      max-height: 90vh;
+      max-height: 92vh;
     }
     .left-panel h1, .left-panel h2 {
       color: #ff9900;
@@ -117,12 +117,12 @@
       text-shadow: 0 0 8px #222a;
       width: 120px;
       pointer-events: none;
-      opacity: 0;
+      opacity: 1;
       transition: opacity 0.25s;
     }
     .distro-block:hover .distro-label,
     .distro-block:focus-within .distro-label {
-      opacity: 1;
+      opacity: 0;
     }
     .distro-block {
       position: absolute;
@@ -184,39 +184,30 @@
       <div class="distro-zigzag">
         <div class="distro-block arch">
           <img class="distro-img" src="../images/arch.png" alt="Arch Linux">
-          <div class="distro-label">Arch Linux</div>
         </div>
         <div class="distro-block nixos">
           <img class="distro-img" src="../images/nixos.png" alt="NixOS">
-          <div class="distro-label">NixOS</div>
         </div>
         <div class="distro-block ubuntu">
-          <img class="distro-img" src="../images/ubuntu.png" alt="Ubuntu">
-          <div class="distro-label">Ubuntu</div>
+          <img class="distro-img" src="../images/netplan.png" alt="Ubuntu">
         </div>
         <div class="distro-block debian">
           <img class="distro-img" src="../images/debian.png" alt="Debian">
-          <div class="distro-label">Debian</div>
         </div>
         <div class="distro-block blackarch">
           <img class="distro-img" src="../images/blackarch.png" alt="BlackArch">
-          <div class="distro-label">BlackArch</div>
         </div>
         <div class="distro-block kali">
           <img class="distro-img" src="../images/kali.png" alt="Kali Linux">
-          <div class="distro-label">Kali Linux</div>
         </div>
         <div class="distro-block popos">
           <img class="distro-img" src="../images/popos.png" alt="Pop!_OS">
-          <div class="distro-label">Pop!_OS</div>
         </div>
         <div class="distro-block almalinux">
           <img class="distro-img" src="../images/almalinux.png" alt="AlmaLinux">
-          <div class="distro-label">AlmaLinux</div>
         </div>
         <div class="distro-block oracle">
           <img class="distro-img" src="../images/oracle.png" alt="Oracle Linux">
-          <div class="distro-label">Oracle Linux</div>
         </div>
       </div>
     </div>
