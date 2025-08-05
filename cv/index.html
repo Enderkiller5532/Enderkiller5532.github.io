@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confidential CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2d0303 0%, #7b1e1e 100%);
+      font-family: 'Segoe UI', 'Ubuntu', Arial, sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+    .center-container {
+      min-height: 100vh;
+      min-width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .confidential-box {
+      background: rgba(60, 0, 0, 0.92);
+      border: 2.5px solid #ff2d2d;
+      border-radius: 18px;
+      box-shadow: 0 0 32px 0 #ff2d2d55, 0 2px 8px #0008;
+      padding: 2.5rem 2.2rem;
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: pulseBox 2.5s infinite alternate;
+    }
+    .confidential-title {
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #ff2d2d;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 8px #ff2d2d88;
+      animation: glowTitle 1.5s infinite alternate;
+    }
+    .confidential-icon {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      color: #ff2d2d;
+      filter: drop-shadow(0 0 8px #ff2d2d88);
+      animation: lockBounce 1.8s infinite;
+      display: block;
+    }
+    .confidential-text {
+      font-size: 1.15rem;
+      color: #ffeaea;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .contact-link {
+      display: inline-block;
+      margin-top: 0.7rem;
+      padding: 0.7em 1.3em;
+      background: #ff2d2d;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.08rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px #ff2d2d44;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      animation: pulseBtn 2s infinite alternate;
+    }
+    .contact-link:hover {
+      background: #fff;
+      color: #b30000;
+      transform: scale(1.06);
+    }
+    @keyframes glowTitle {
+      from { text-shadow: 0 0 8px #ff2d2d88; }
+      to   { text-shadow: 0 0 24px #ff2d2d; }
+    }
+    @keyframes pulseBox {
+      from { box-shadow: 0 0 32px 0 #ff2d2d55, 0 2px 8px #0008; }
+      to   { box-shadow: 0 0 64px 0 #ff2d2d99, 0 2px 16px #000a; }
+    }
+    @keyframes lockBounce {
+      0%   { transform: translateY(0);}
+      30%  { transform: translateY(-8px);}
+      60%  { transform: translateY(0);}
+      100% { transform: translateY(0);}
+    }
+    @keyframes pulseBtn {
+      from { box-shadow: 0 2px 8px #ff2d2d44; }
+      to   { box-shadow: 0 4px 16px #ff2d2d99; }
+    }
+  </style>
+</head>
+<body>
+  <div class="center-container">
+    <div class="confidential-box">
+      <span class="confidential-icon">🔒</span>
+      <div class="confidential-title">Confidential Information</div>
+      <div class="confidential-text">
+        This CV contains confidential and protected data.<br>
+        To access this information, please contact me directly via Gmail.<br>
+        <strong>Your request will be reviewed for security reasons.</strong>
+      </div>
+    <a class="contact-link" href="./contacts/index.html">Contact via Gmail</a>
+    </div>
+  </div>
+</body>
+</html>

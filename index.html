@@ -144,7 +144,7 @@
       <img class="profile-photo" src="images/me.jpg" alt="My Photo">
     </div>
     <div class="bio-section" id="bio-section">
-      Загрузка описания...
+      Loading...
     </div>
     <div class="buttons-row">
       <button class="circle-btn" title="Projects" onclick="window.open('projects/', '_self')">📁</button>
@@ -154,7 +154,7 @@
     </div>
   </div>
   <script>
-    // Подгрузка описания из файла images/bio.txt
+    // описания из файла ./files/bio.txt Не трогать пока работает 
     fetch('files/bio.txt')
       .then(r => r.ok ? r.text() : Promise.reject())
       .then(text => {

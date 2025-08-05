@@ -81,7 +81,7 @@
 </style>
 </head>
 <body>
-  <h1>Мои проекты</h1>
+  <h1>My projects</h1>
   <div class="projects-container" id="projects-container"></div>
 
   <script>
@@ -107,7 +107,7 @@
 
           // Кнопка для открытия локальной директории
           const openDirBtn = document.createElement('button');
-          openDirBtn.title = 'Открыть локальную директорию проекта';
+          openDirBtn.title = 'Open Project Directory (local can be outdated)';
           openDirBtn.style = `
             width: 36px;
             height: 36px;
@@ -136,7 +136,7 @@
           const link = document.createElement('a');
           link.className = 'project-link';
           link.href = project.link;
-          link.textContent = 'Перейти к проекту';
+          link.textContent = 'Go to project on GitHub or GitLab';
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
 
@@ -158,7 +158,7 @@
         });
       })
       .catch(error => {
-        console.error('Ошибка загрузки проектов:', error);
+        console.error('Loading project error:', error);
       });
   </script>
 </body>
