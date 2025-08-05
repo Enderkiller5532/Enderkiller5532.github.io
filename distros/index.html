@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Linux Distributions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', 'Ubuntu', Arial, sans-serif;
+      overflow: hidden;
+    }
+    .main-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      min-height: 100vh;
+      width: 100vw;
+      background: linear-gradient(120deg, #111 70%, #1a1a1a 100%);
+    }
+    .left-panel {
+      background: rgba(20, 20, 20, 0.98);
+      border-radius: 18px;
+      box-shadow: 0 0 32px 0 #ff990055, 0 2px 8px #0008;
+      padding: 2.2rem 2.2rem;
+      min-width: 340px;
+      max-width: 540px;
+      margin: 4vh 0 4vh 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      border: 2.5px solid #ff9900;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: #eaeaea;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+    .left-panel h1, .left-panel h2 {
+      color: #ff9900;
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+      font-size: 1.5rem;
+      text-shadow: 0 0 8px #ff990088;
+    }
+    .left-panel .highlight {
+      color: #58a6ff;
+      font-weight: bold;
+    }
+    .right-panel {
+      position: relative;
+      flex: 1 1 auto;
+      min-width: 400px;
+      max-width: 700px;
+      margin: 0 4vw 0 0;
+      height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+    .distro-zigzag {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-width: 340px;
+      max-width: 700px;
+    }
+    .distro-img {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #181818;
+      box-shadow: 0 2px 12px #000a;
+      border: 2px solid #222;
+      transition: 
+        transform 0.25s cubic-bezier(.68,-0.55,.27,1.55),
+        box-shadow 0.25s,
+        filter 0.25s;
+      cursor: pointer;
+      filter: brightness(0.95) grayscale(10%);
+      pointer-events: auto;
+    }
+    .distro-img:hover {
+      transform: scale(1.13) rotate(-2deg);
+      box-shadow: 0 0 32px #58a6ff99, 0 2px 16px #ff990088;
+      filter: brightness(1.15) grayscale(0%);
+      z-index: 2;
+    }
+    /* Zigzag positions for each distro image */
+    .arch     { top: 5vh;   right: 60px; }
+    .nixos    { top: 18vh;  right: 180px; }
+    .ubuntu   { top: 32vh;  right: 80px; }
+    .debian   { top: 46vh;  right: 200px; }
+    .blackarch{ top: 60vh;  right: 60px; }
+    .kali     { top: 74vh;  right: 180px; }
+    .popos    { top: 15vh;  right: 320px; }
+    .almalinux{ top: 55vh;  right: 320px; }
+    .oracle   { top: 85vh;  right: 80px; }
+    .distro-label {
+      position: static;
+      margin-top: 0.5em;
+      color: #58a6ff;
+      font-size: 1.08rem;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 8px #222a;
+      width: 120px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .distro-block:hover .distro-label,
+    .distro-block:focus-within .distro-label {
+      opacity: 1;
+    }
+    .distro-block {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: auto;
+    }
+    .distro-block:hover .distro-label {
+      color: #fff;
+      text-shadow: 0 0 12px #58a6ff, 0 0 8px #ff9900;
+    }
+    .left-panel .blur-on-hover {
+      transition: filter 0.25s, color 0.25s;
+    }
+    .right-panel:hover ~ .left-panel .blur-on-hover,
+    .right-panel:focus-within ~ .left-panel .blur-on-hover {
+      filter: blur(1.5px) brightness(1.2);
+      color: #fff;
+    }
+    @media (max-width: 1100px) {
+      .main-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      .left-panel, .right-panel {
+        min-width: 80vw;
+        max-width: 98vw;
+        margin: 2vh 0;
+        padding: 1.2rem 0.7rem;
+      }
+      .right-panel {
+        height: 350px;
+        min-width: 340px;
+        max-width: 98vw;
+      }
+      .distro-zigzag {
+        height: 350px;
+        min-width: 340px;
+        max-width: 98vw;
+      }
+      .distro-img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-flex">
+    <div class="left-panel">
+      <div class="blur-on-hover" id="distro-text">
+        <!-- Текст будет подгружен из data.txt -->
+        Loading...
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="distro-zigzag">
+        <div class="distro-block arch">
+          <img class="distro-img" src="../images/arch.png" alt="Arch Linux">
+          <div class="distro-label">Arch Linux</div>
+        </div>
+        <div class="distro-block nixos">
+          <img class="distro-img" src="../images/nixos.png" alt="NixOS">
+          <div class="distro-label">NixOS</div>
+        </div>
+        <div class="distro-block ubuntu">
+          <img class="distro-img" src="../images/ubuntu.png" alt="Ubuntu">
+          <div class="distro-label">Ubuntu</div>
+        </div>
+        <div class="distro-block debian">
+          <img class="distro-img" src="../images/debian.png" alt="Debian">
+          <div class="distro-label">Debian</div>
+        </div>
+        <div class="distro-block blackarch">
+          <img class="distro-img" src="../images/blackarch.png" alt="BlackArch">
+          <div class="distro-label">BlackArch</div>
+        </div>
+        <div class="distro-block kali">
+          <img class="distro-img" src="../images/kali.png" alt="Kali Linux">
+          <div class="distro-label">Kali Linux</div>
+        </div>
+        <div class="distro-block popos">
+          <img class="distro-img" src="../images/popos.png" alt="Pop!_OS">
+          <div class="distro-label">Pop!_OS</div>
+        </div>
+        <div class="distro-block almalinux">
+          <img class="distro-img" src="../images/almalinux.png" alt="AlmaLinux">
+          <div class="distro-label">AlmaLinux</div>
+        </div>
+        <div class="distro-block oracle">
+          <img class="distro-img" src="../images/oracle.png" alt="Oracle Linux">
+          <div class="distro-label">Oracle Linux</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Подгрузка текста из data.txt
+    fetch('data.txt')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(text => {
+        document.getElementById('distro-text').textContent = text;
+      })
+      .catch(() => {
+        document.getElementById('distro-text').textContent = 'Failed to load data.';
+      });
+
+    // Эффект: при наведении на правую панель текст становится легче читать
+    const rightPanel = document.querySelector('.right-panel');
+    const leftText = document.querySelector('.blur-on-hover');
+    rightPanel.addEventListener('mouseenter', () => {
+      leftText.style.filter = 'blur(1.5px) brightness(1.2)';
+      leftText.style.color = '#fff';
+    });
+    rightPanel.addEventListener('mouseleave', () => {
+      leftText.style.filter = '';
+      leftText.style.color = '';
+    });
+  </script>
+</body>
+</html>

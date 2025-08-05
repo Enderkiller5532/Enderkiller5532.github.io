@@ -1,0 +1,26 @@
+🐧 Distributions
+
+Over the years, I’ve worked with a wide range of Linux distributions, both for personal use and professional projects. While I’ve explored many flavors of Linux, I naturally gravitated towards systems that prioritize flexibility, control, and transparency.
+
+Some of the distributions I’ve had hands-on experience with include:
+
+    Arch Linux – My go-to daily driver for its minimalism and rolling-release model. I enjoy the Arch philosophy of building things from the ground up, tailoring the system exactly to my needs. I’ve used it extensively in both bare-metal and virtualized environments.
+
+    NixOS – One of my favorites. I appreciate its declarative configuration model and reproducibility. I’ve configured full systems using configuration.nix, managed services, and maintained custom development environments using Nix tooling.
+
+    Ubuntu / Ubuntu Server – I've worked with both desktop and server editions, especially in deployment scenarios and when setting up quick POCs. Ubuntu's widespread compatibility makes it a reliable choice when hardware or third-party software support is critical.
+
+    Debian – Stable, predictable, and rock-solid. I’ve used Debian for server setups and when I needed a clean, no-nonsense environment to build on.
+
+    BlackArch – Used in security testing labs to explore pentesting tools. I’ve set up sandboxed environments for experimentation.
+
+    Kali Linux – Mostly used in isolated environments or for tool testing. I’m aware of the risks and prefer to separate it from daily drivers.
+
+    Pop!_OS – Used for testing hardware compatibility and pre-configured environments, especially with NVIDIA setups.
+
+    AlmaLinux & Oracle Linux – Worked with these RHEL-based systems in server deployments, testing migration paths from CentOS, and for understanding enterprise-focused configurations.
+
+I don’t just install distros—I get deep into them. I’ve customized bootloaders, optimized init systems, configured custom services, and written automation scripts for various scenarios.
+
+While I’ve explored a broad spectrum, my preferred environments remain Arch Linux and NixOS, mainly due to their flexibility and the degree of control they offer. They allow me to define exactly how my system behaves, which is crucial for someone who values precision and efficiency.
+Now my main Distros is Arch and NixOS 
