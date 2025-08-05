@@ -9,7 +9,7 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Запретить прокрутку */
+      overflow: hidden; /* Запретить прокрутку ВАЖНО НЕ УБЕРАТЬ НИ В КОЕМ СЛУЧАЕ  */
     }
     body {
       min-height: 100vh;
@@ -18,7 +18,7 @@
       height: 100vh;
       font-family: 'Segoe UI', 'Ubuntu', Arial, sans-serif;
       color: #c9d1d9;
-      background: url('bg.png') no-repeat center center fixed;
+      background: url('images/bg.png') no-repeat center center fixed;
       background-size: cover;
       position: relative;
       display: flex;
@@ -155,7 +155,7 @@
   </div>
   <script>
     // Подгрузка описания из файла images/bio.txt
-    fetch('images/bio.txt')
+    fetch('files/bio.txt')
       .then(r => r.ok ? r.text() : Promise.reject())
       .then(text => {
         document.getElementById('bio-section').textContent = text;
