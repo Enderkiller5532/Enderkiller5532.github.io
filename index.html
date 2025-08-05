@@ -4,17 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #181c22 0%, #23272e 100%);
+      color: #c9d1d9;
+      font-family: 'Segoe UI', 'Ubuntu', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 2.5rem;
+    }
+    .photo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #23272e;
+      box-shadow: 0 4px 24px #0007;
+      background: #23272e;
+    }
+    .bio-section {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 220px;
+      max-width: 400px;
+      font-size: 1.1rem;
+      color: #b5bdc6;
+      padding-left: 1.5rem;
+    }
+    .buttons-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      width: 100%;
+    }
+    .circle-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: #23272e;
+      color: #58a6ff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0004;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-btn:hover {
+      background: #58a6ff;
+      color: #23272e;
+      transform: scale(1.08);
+    }
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .bio-section {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+      }
+      .buttons-row {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a class="projects-button" href="projects/">Projects</a>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Main page content left intentionally empty for now -->
-  </main>
+  <div class="container">
+    <div class="photo-section">
+      <img class="profile-photo" src="images/me.jpg" alt="My Photo">
+    </div>
+    <div class="bio-section" id="bio-section">
+      Загрузка описания...
+    </div>
+  </div>
+  <div class="buttons-row">
+    <button class="circle-btn" title="Projects" onclick="window.open('projects/', '_self')">📁</button>
+    <button class="circle-btn" title="CV" onclick="window.open('cv.html', '_self')">📄</button>
+    <button class="circle-btn" title="Distributions" onclick="window.open('distros.html', '_self')">💻</button>
+    <button class="circle-btn" title="Contacts" onclick="window.open('contacts.html', '_self')">✉️</button>
+  </div>
+  <script>
+    // Подгрузка описания из файла bio.txt
+    fetch('bio.txt')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(text => {
+        document.getElementById('bio-section').textContent = text;
+      })
+      .catch(() => {
+        document.getElementById('bio-section').textContent = 'Описание не найдено';
+      });
+  </script>
 </body>
 </html>
