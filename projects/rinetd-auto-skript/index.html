@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>rinetd-auto-skript — Directory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Ubuntu Mono', 'Fira Mono', 'Consolas', monospace;
+      color: #c5c8c6;
+      background: linear-gradient(135deg, #22262e 0%, #373b41 60%, #1d1f21 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      color: #8abeb7;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+      font-family: 'Ubuntu', 'Segoe UI', Arial, sans-serif;
+    }
+    .dir-list {
+      background: rgba(40, 44, 52, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 16px #000a;
+      padding: 2rem;
+      min-width: 320px;
+      max-width: 600px;
+      border: 1px solid #373b41;
+    }
+    .dir-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .dir-list li {
+      margin: 0.7em 0;
+    }
+    .dir-list a {
+      color: #b5bd68;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.2s, background 0.2s;
+      padding: 0.2em 0.5em;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+    .dir-list a:hover {
+      color: #f0c674;
+      background: #282a2e;
+    }
+    .dir-list .folder::before {
+      content: "📁 ";
+      color: #81a2be;
+    }
+    .dir-list .file::before {
+      content: "📄 ";
+      color: #b294bb;
+    }
+  </style>
+</head>
+<body>
+  <h1>rinetd-auto-skript</h1>
+  <div class="dir-list">
+    <ul>
+      <li><a class="file" href="README.md" target="_blank">README.md</a></li>
+      <li><a class="file" href="index.html" target="_blank">index.html</a></li>
+      <li><a class="file" href="addrinetd.sh" target="_blank">addrinetd.sh</a></li>
+      <!-- <li><a class="folder" href="docs/">docs/</a></li> -->
+      <!-- Добавьте свои файлы и папки вручную -->
+    </ul>
+  </div>
+</body>
+</html>
