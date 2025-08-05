@@ -1,2 +1,7 @@
-Here test
-Привет, это моё описание
+Hi, I'm a Linux enthusiast and aspiring DevOps engineer.
+With strong experience in system administration, automation, and network configuration, I enjoy building secure and efficient environments using tools like Docker, Kubernetes, and Git.
+I love exploring open-source technologies, customizing Linux distributions, and turning complex problems into clean, working solutions.
+
+Main tools: NixOS, Arch, Docker, Git, HAProxy, Zabbix
+Learning: Kubernetes, Terraform, GitOps
+Languages: Bash, Python
